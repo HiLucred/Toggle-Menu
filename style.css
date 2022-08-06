@@ -1,0 +1,160 @@
+/* Geral */
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  box-sizing: border-box;
+}
+
+:root {
+  --base-color: rgb(194, 68, 68);
+  --base-font: 'Poppins', sans-serif;
+  --white-color: white;
+}
+
+body {
+  background: rgb(216, 216, 216);
+}
+
+/* Default Menu */
+
+nav {
+  width: 100%;
+  height: 5rem;
+  background: rgb(43, 42, 42);
+  box-shadow: 0 3px 5px 0.5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  height: 100%;
+  margin-inline: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.menu {
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+  top: -50;
+  transition: 0.3s
+}
+
+.menu .menu__option {
+  display: none;
+}
+
+.menu a {
+  position: relative;
+  transition: 0.3s;
+  font: 500 1.5rem var(--base-font);
+  color: var(--white-color);
+}
+
+.menu a:hover {
+  color: var(--base-color);
+}
+
+.menu a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: -1.25rem;
+  left: 0;
+  transition: 0.3s;
+  background: var(--base-color);
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.logo {
+  cursor: pointer;
+  transition: 0.3s;
+  font: 500 1.7rem var(--base-font);
+  color: var(--white-color);
+}
+
+.logo:hover {
+  transition: 0.5s;
+  transform: scale(1.1);
+}
+
+.logo strong {
+  color: var(--base-color);
+}
+
+.toggle {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--white-color);
+}
+
+.icon-close {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: -1.5rem;
+  right: 1.5rem;
+  transition: 0.3s;
+}
+
+/* Toggle Menu */
+
+nav.show-menu .menu{
+  height: 100vh;
+  width: 100vw;
+  background: rgb(43, 42, 42);
+
+  visibility: visible;
+  opacity: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+nav.show-menu .menu__option {
+  display: flex;
+}
+
+nav.show-menu div.icon-close {
+  visibility: visible;
+  opacity: 1;
+  top: 1.8rem;
+}
+
+/* @Media Queries */
+
+@media (min-width: 1200px) {
+  nav .menu {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .menu .menu__option {
+    display: flex;
+  }
+
+  .menu .menu__option a {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .toggle {
+    display: none;
+  }
+}
